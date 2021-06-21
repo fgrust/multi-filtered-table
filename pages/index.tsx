@@ -3,7 +3,7 @@ import { users, headers } from '@/__mock__/users'
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex justify-center">
       <DataTable
         headerData={headers}
         data={users}

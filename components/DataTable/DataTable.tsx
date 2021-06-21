@@ -30,10 +30,12 @@ const DataTable = <T extends { [K in keyof T]: string }>(props: IProps<T>) => {
   const header = useMemo(
     () =>
       headerData && (
-        <thead>
-          <tr>
+        <thead className='table-header-group'>
+          <tr className='table-row'>
             {headerData.map((item) => (
-              <th key={item.name}>{item.display ?? capitalize(item.name)}</th>
+              <th className='table-cell text-left pb-1' key={item.name}>
+                {item.display ?? capitalize(item.name)}
+              </th>
             ))}
           </tr>
         </thead>
@@ -43,11 +45,14 @@ const DataTable = <T extends { [K in keyof T]: string }>(props: IProps<T>) => {
   const body = useMemo(
     () =>
       filtered && (
-        <tbody>
+        <tbody className='table-row-group'>
           {filtered.map((row: any) => (
-            <tr key={keyExtractor?.(row)}>
+            <tr key={keyExtractor?.(row)} className='table-row'>
               {headerData?.map((item) => (
-                <td key={`${item.name}-${keyExtractor?.(row)}`}>
+                <td
+                  className='table-cell pr-2'
+                  key={`${item.name}-${keyExtractor?.(row)}`}
+                >
                   {row[item.name]}
                 </td>
               ))}
@@ -60,12 +65,13 @@ const DataTable = <T extends { [K in keyof T]: string }>(props: IProps<T>) => {
   const filter = useMemo(
     () =>
       headerData && (
-        <thead>
-          <tr>
+        <thead className='table-footer-group'>
+          <tr className='table-row'>
             {headerData.map((item) => (
-              <th key={item.name}>
+              <th className='table-cell' key={item.name}>
                 <input
                   type='text'
+                  className='border-2 border-gray-500 focus:border-blue-300 focus:outline-none'
                   name={item.name}
                   value={terms[item.name]}
                   onChange={handleChange}

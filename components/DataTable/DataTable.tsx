@@ -60,7 +60,7 @@ const DataTable = <T extends { [K in keyof T]: string }>(props: IProps<T>) => {
           ))}
         </tbody>
       ),
-    [headerData, filtered],
+    [headerData, filtered, keyExtractor],
   )
   const filter = useMemo(
     () =>

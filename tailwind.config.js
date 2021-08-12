@@ -9,5 +9,5 @@ module.exports = {
       display: ['hover', 'focus']
     },
   },
-  plugins: [],
+  plugins: []
 }
